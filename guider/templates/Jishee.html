@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">  
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+    <div class="header-bg">
+      <div class="container_24">
+      	<div class="display">
+        </div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}" class="current">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <section id="content">
+  	<div class="container_24">
+    	<div class="row">
+      	<div class="wrapper">
+        	<div class="grid_16">
+          	<div class="box">
+<form action="{% url home-FAQ %}" method="POST"> {% csrf_token %}
+            	<h2>Сүүлд асуугдсан асуултууд</h2>
+           {% for a in aq %}
+              <dl class="list3"><table>
+              	<tr><td><dt>Асуулт: {{a.question}}</dt></td></tr>
+                <tr><td><dd>Хариулт:{{a.answer}} </dd></td></tr>
+</table>
+         {%endfor%}
+              </dl>
+            </div>
+          </div>
+        	<div class="grid_8">
+            <div class="inside">
+              <div class="inside">
+                <h3>Асуултын жагсаалтууд</h3>
+                <dl class="list2">
+                	<dt>Хариулагдаагүй асуултууд</dt>
+                  <dd>Aenean nonummy hendrerit maur ishasellus ptausce.</dd> 
+                  <dt>Vestibulum sit amet pharetra risus</dt>
+                  <dd>Suscipit varius mium sociis natoque penatibus et.</dd>
+                  <dt>Vivamus lacinia tristique</dt>
+                  <dd>Cum sociis natoque penatibus emagnis dis parturient.</dd>
+                  <dt>Aenean vel nunc est, sed</dt>
+                  <dd>Watoque penatibu magnis dis parturient montes.</dd>
+                  <dt>Curabitur eu semper arcu</dt>
+                  <dd>Aenean nonummy hendrerit maur ishasellus ptausce.</dd> 
+                  <dt>Vestibulum sit amet pharetra risus</dt>
+                  <dd>Suscipit varius mium sociis natoque penatibus et.</dd>
+                  <dt>Vivamus lacinia tristique</dt>
+                  <dd>Cum sociis natoque penatibus emagnis dis parturient.</dd>
+                  <dt>Aenean vel nunc est, sed</dt>
+                  <dd>Watoque penatibu magnis dis parturient montes.</dd>
+                </dl>
+                <a href="#" class="button">More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></form>
+  	<div class="container_24">
+<div class="row">
+      	<div class="wrapper">
+      	  <div class="grid_13">
+          	<div class="suffix_1">
+         
+            	<h3>Асуулт асуух</h3>
+              <p>Та асуултаа асууна уу?:</p>
+                <form action="{% url home-FAQ %}" method="POST"> {% csrf_token %}
+                  <div class="grid_7 omega">
+                  	Асуултаа асуух:<br />
+                    <textarea name = "question"></textarea>
+                    <div class="wrapper">
+                      <a href="#" class="button" >Илгээх</a><a href="#" class="button" >Clear</a>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+      </div>
+
+
+  </section>
+  <!-- footer -->
+   <footer>
+    <div class="container_24">
+    	<div class="wrapper">
+      	<div class="copy">ШУТИС-КтМС &copy; 2011 &nbsp;<a href="http://www.csms.edu.mn">Веб хаяг</a>&nbsp; | &nbsp; Ж.Очмаа <a title="" href=""></a></div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

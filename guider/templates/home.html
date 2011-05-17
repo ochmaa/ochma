@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en-us" xmlns="http://www.w3.org/1999/xhtml" lang="en-us"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<head>
+  <title></title>
+   <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">
+  <script type="text/javascript">window.__admin_media_prefix__ = "/media/";</script>
+  <meta name="robots" content="NONE,NOARCHIVE">  
+
+</head>
+
+<body class="login">
+  <!-- header -->
+  <header>
+    <div class="header-bg">
+      <div class="container_24">
+      	<div class="display">
+        </div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}" class="current">Нүүр</a></li>
+            <li><a href="{% url home-student %}">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+          </ul>
+         </nav>       
+
+        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <section id="content">
+       	<div class="container_24">
+    	<div class="column">
+      <div class="grid_6">
+             <div class ="box">
+             <div class="display">
+              <h5>Үндсэн цэс</h5>
+
+           <div id="menu">
+		<ul><b>
+			<li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+			<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+			<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+			<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+        {% if request.user %}
+            <li><a href="{% url logout-page %}" class="">Гарах</a></li>
+        {% endif%}
+		</ul></b>
+	</div>
+      <br></br>
+          <form action="{% url log-student %}" method="POST"> {% csrf_token %}
+        {% if not request.user %}
+               <table ><tr><td><h4>&nbsp;&nbsp;&nbsp;&nbsp;Нэвтрэх хэсэг</h4></td></tr> 
+                    <tr><td>Нэвтрэх нууц код: </td>
+                         </tr><tr><td></h5><input type="text" name="name" /></h5></td>
+                      </tr>   
+                    <tr><td>Нэвтрэх нууц үг:</td>
+                     </tr><tr><td><input type="password" name="code" /></td>
+                      </tr>
+                                     <tr><td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="art-button" type="submit" name="submit" value="Нэвтрэх"/></td></tr></form></brs>
+   <tr><td>эсвэл <a href="{% url reg-student %}" title="contact">бүртгүүлэх</a></td></tr>                
+  </table>
+        {% endif %}
+          
+            </div> </div></div>
+                <div style="width: 45px; height:30px"></div>
+                    <div style=" padding: 0px 0px 0px 13px">
+                      <div class="home_box">
+                             <form action="{% url yzhuv-student %}" method="POST"> {% csrf_token %}
+ 
+                                                      
+                                 <img src="/static/images/img12.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+                                  <h1 class="h1_home_box">Ажлын зар</h1>
+                                    <div class="razd_h"></div>
+                                    <div style="width: 155px;  height:5px"></div>
+
+                         
+                                        <b>Ажилд урьж байна</b><br />
+                                        Linux OS, Python хэл мэдэх төгсөх курсын оюутан ажилд авна. Санхүүгийн ПХ-аар төсөл, диплом хийсэн бол сайн.Цалин сарын 400 000 төгрөг
+
+Холбоо барих<br></br>
+DotMN LLC<br></br>
+www.dot.mn<br></br>
+99117430. 99051670<br></br>
+                         
+                              
+                           </form>
+                            </div>
+                            <div style="width: 45px; height:20px; float: left;"></div>
+                            <div class="home_box">
+                                <img src="/static/images/img11.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+                                  <h1 class="h1_home_box">Үзлэгийн хуваарь</h1>
+                                    <div class="razd_h"></div>
+                                    <div style="height:5px"></div>
+                          <h4>Дараагын үзлэгийн хуваарь </h4>
+                                      <table border="1" cellspacing="0" cellpadding="1" width="400">
+<tbody>
+
+        <tr>
+
+            <th width="60" valign="top">Өдөр</th>
+            <th width="10" valign="top">Цаг</th>
+            <th width="10"  valign="top">Дүгнэх оноо</th>
+            <th width="20" valign="top">Ажиллах комисс</th>
+            <th width="10" valign="top">Өрөө</th>
+            <th width="80" valign="top">Шаардлага</th>
+        </tr>
+
+
+        <tr>
+
+            <td width="40" valign="top">2011-05-12</td>
+            <td width="30" valign="center">15:00</td>
+            <td width="30" valign="top">15</td>
+            <td width="60" valign="top">Багийн бүх багш нар</td>
+            <td width="30" valign="center">204</td>
+            <td width="80" valign="top">Програм 100% бэлэн болсон байх</td>
+        </tr>
+</tbody>
+                             
+                            </div>
+
+  </section>
+
+
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+ 
+</body>
+</html>

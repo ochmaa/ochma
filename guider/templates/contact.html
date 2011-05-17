@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all"> 
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+        <div class="header-bg">
+      <div class="container_24">
+      	<div class="display">
+        </div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}" class="current">Холбоо барих</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <section id="content">
+  	<div class="container_24">
+    	<div class="row">
+      	<div class="wrapper">
+        	<div class="grid_12">
+          	<div class="box">
+            	<h2></h2>
+              <h4>Сургуулийн зорилго</h4>
+              Манай сургууль эх орныхоо нийгэм, эдийн засаг, шинжлэх ухаан, технологийн эрчимтэй хөгжилд нийцvvлэн компьютерийн ухааны болон бизнесийн удирдлагын чиглэлийн 14 мэргэжлээр сургалт эрхлэн явуулж байна. Эдгээр мэргэжлийн оюутнуудад орчин үеийн өндөр боловсрол эзэмшиж, нийгэмд байр сууриа олж, амьдралынхаа зорилгыг биелvvлэхэд нь туслах, практикийг хослуулан сургалт vйлдвэрлэлийн холбоог бэхжүүлэх, сургалтын чанарыг дээшлvvлэх явдал нь тус сургуулийн эрдмийн хамт олны эрхэм зорилго билээ.
+            </div>
+          </div>
+        	<div class="grid_12">
+          	<div class="box">
+            	<h2>Холбогдох хаяг</h2>
+              <div class="wrapper">
+              	<img src="/static/images/2.jpg" alt="" class="img-indent">
+                <dl class="address">
+                	<dt>ШУТИС-КтМС<br />
+                  Улаанбаатар хот 210349, Ш/Х-313<br />
+                  Бага тойруу-49, КТМС<br />
+                  Баянзүрх дүүрэг 2-р хороо <br/>
+                  Монгол улс <br />
+                  976-11-453380 <br />
+                  Glasgow, D04 89GR.</dt>
+                  <dd><span>Утас:</span>+1 959 603 6035</dd>
+                  <dd><span>Факс:</span>+1 101 889 9898</dd>
+                  <dd>Цахим Хаяг: <a href="www.csms.edu.mn">www.csms.edu.mn</a></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      	<div class="wrapper">
+      	  <div class="grid_13">
+          	<div class="suffix_1">
+         
+            	<h3>Холбогдох</h3>
+              <p>Хэрэв та бидэнтэй холбогдохыг хүсвэл мэйл илгээнэ үү:</p>
+                <form action="{% url message_contact %}" method="POST"> {% csrf_token %}
+              
+                  <div class="grid_5 alpha">
+                    <label>Таны нэр:<br />
+                      <input type="text" value="" name = "name" />
+                    </label>
+                    <label>E-mail:<br />
+                      <input type="text" value="" name = " email" />
+                    </label>
+                  </div>
+                  <div class="grid_7 omega">
+                  	Мэссэж:<br />
+                    <textarea name = "message"></textarea>
+                    <div class="wrapper">
+                      <a href="#" class="button" >Илгээх</a><a href="#" class="button" >Clear</a>
+                    </div>
+                  </div>
+            
+            </div>
+          </div>
+      	 
+      	</div>
+      </div>
+    </div>
+  </section>
+  <!-- footer -->
+  <footer>
+    <div class="container_24">
+    	<div class="wrapper">
+      	<div class="copy">ШУТИС-КтМС &copy; 2011 &nbsp;<a href="http://www.csms.edu.mn">Веб хаяг</a>&nbsp; | &nbsp; Ж.Очмаа <a title="Free Templates Online" href=""></a></div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

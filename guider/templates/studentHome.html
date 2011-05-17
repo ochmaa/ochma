@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">
+  
+
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+    <div class="header-bg">
+      <div class="container_24">
+      	<div class="display">
+        </div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}" class="current">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+            <li><a href="">Жишээ баримт</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <section id="content">
+       	<div class="container_24">
+    	<div class="column">
+      <div class="grid_6">
+             <div class ="box">
+             <div class="display">
+              <h5>Үндсэн цэс</h5>
+           <div id="menu">
+           	<ul><b>
+              <li><a href="{% url sedev-student %}" class="">Сэдэв</a></li>
+              <li><a href="{% url yzhuv-student %}" class="">Үзлэгийн хуваарь</a></li>
+              <li><a href="#" class="">Үзлэгийн дүн</a></li>
+              <li><a href="{% url home-FAQ %}" class="">Асуулт, хариулт</a></li>
+              <li><a href="{% url logout-page %}" class="">Гарах</a></li>
+            </ul></b></div>
+            </div> </div></div>
+           {% if user.is_authenticated %}
+            	<h3>Тавтай морилно уу, та амжилттай холбогдлоо <span> {{ user.first_name}}</span></h3>
+           {% else %}
+                <h3>Тавтай морилно уу, та амжилттай холбогдлоо <span> {{ User.first_name}}</span></h3>
+           {% endif %}
+            <div style="height:30px"></div>
+                    <div style=" padding: 0px 0px 0px 13px">
+                      <div class="home_box">
+                                <img src="/static/images/img11.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+                                  <h1 class="h1_home_box">Үзлэгийн хуваарь</h1>
+                                    <div class="razd_h"></div>
+                                    <div style="height:5px"></div>
+                                        <b>Quisque luctus, mi ornare </b><br />
+                                        Suspendisse tempus aliquet elit sit amet pellen- tesque. Donec iaculis pulvinar mauris, ac vulpu- tate justo pretium quis. Morbi id magna ac tortor pulvinar facilisis. Nunc sed elit id enim placerat 
+                    
+                            </div>
+                            <div style="width: 45px; height:20px; float: left;"></div>
+                            <div class="home_box">
+                                <img src="/static/images/img12.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+                                  <h1 class="h1_home_box">Анхааруулга</h1>
+                                    <div class="razd_h"></div>
+                                    <div style="height:5px"></div>
+                                        <b>Suspendisse rutrum interdum lacinia. </b><br />
+                                        Suspendisse tempus aliquet elit sit amet pellen- tesque. Donec iaculis pulvinar mauris, ac vulpu- tate justo pretium quis. Morbi id magna ac tortor pulvinar facilisis. Nunc sed elit id enim placerat 
+                             
+                            </div>
+       	<div class="grid_8">
+
+
+  </section>
+
+  <script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

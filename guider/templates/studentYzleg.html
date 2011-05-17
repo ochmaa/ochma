@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/stil.css" type="text/css" media="all">
+  
+
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+    <div class="header-bg">
+      <div class="container_24">
+      	<div class="display">
+        </div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}" class="current">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+            <li><a href="">Жишээ баримт</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <section id="content">
+<div class="container_24">
+    	<div class="row">
+      	<div class="wrapper">
+        	<div class="grid_5">
+          	<div class="box">
+            	<h5>Үндсэн цэс</h5>
+           <div id="menu">
+           	<ul><b>
+              <li><a href="{% url sedev-student %}" class="">Сэдэв</a></li>
+              <li><a href="{% url yzhuv-student %}" class="">Үзлэгийн хуваарь</a></li>
+              <li><a href="#" class="">Үзлэгийн дүн</a></li>
+              <li><a href="{% url home-FAQ %}" class="">Асуулт, хариулт</a></li>
+              <li><a href="{% url logout-page %}" class="">Гарах</a></li>
+            </ul>
+            </div> 
+            </div>
+          </div>
+        	<div class="grid_18">
+          	<div class="box">
+                <div class = "wrapper">
+                   <div style="height:30px"></div>
+                    <div style=" padding: 0px 0px 0px 13px">
+                      <div class="home_box">
+            	<form action="{% url yzhuv-student %}" method="POST"> {% csrf_token %}
+                {% if yzlegs %}
+
+                <table>                                 <img src="/static/images/img11.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+                                  <h1 class="h1_home_box">Үзлэгийн хуваарь</h1>
+                                    <div class="razd_h"></div>
+                                   <table border="1" cellspacing="0" cellpadding="0" width="700">
+<tbody>
+
+        <tr>
+            <th width="43" valign="top"></th>
+            <th width="10" valign="top"></th>
+            <th width="60" valign="top">Өдөр</th>
+            <th width="10" valign="top">Цаг</th>
+            <th width="10"  valign="top">Дүгнэх оноо</th>
+            <th width="20" valign="top">Ажиллах комисс</th>
+            <th width="10" valign="top">Өрөө</th>
+            <th width="80" valign="top">Шаардлага</th>
+        </tr>
+                {% for y in yzlegs %}
+
+        <tr>
+            <th width="43" valign="top">{{y.id}}</th>
+            <td width="10" valign="top">{{y.name}}</td>
+            <td width="40" valign="top">{{y.date}}</td>
+            <td width="30" valign="center">{{y.time}}</td>
+            <td width="30" valign="top">{{y.score}}</td>
+            <td width="60" valign="top">{{y.commis}}</td>
+            <td width="30" valign="center">{{y.room}}</td>
+            <td width="80" valign="top">{{y.shaardlaga}}</td>
+        </tr>
+                {%endfor%}
+                {% endif%}
+</tbody>
+</table>
+
+                  </div>
+				</form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><br></br>
+
+  <footer>
+    <div class="container_24">
+    	<div class="wrapper">
+      	<div class="copy">ШУТИС-КтМС &copy; 2011 &nbsp;<a href="http://www.csms.edu.mn">Веб хаяг</a>&nbsp; | &nbsp; Ж.Очмаа <a title="Free Templates Online" href=""></a></div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>
