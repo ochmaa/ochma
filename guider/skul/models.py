@@ -28,13 +28,12 @@ class Uzleg(models.Model):
     name = models.CharField(max_length = 50)
     date = models.DateField()
     time = models.TimeField()
-    score = models.IntegerField()
     commis = models.CharField(max_length = 50)
     room = models.IntegerField()
     shaardlaga = models.TextField()
 
 class score(models.Model):
-    uzleg  = models.ForeignKey(uzleg)
+    uzleg  = models.ForeignKey(Uzleg)
     student = models.ForeignKey(Student)
     score = models.IntegerField()
         
