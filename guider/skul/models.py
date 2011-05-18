@@ -54,7 +54,7 @@ class tugsult_ajil(models.Model):
     code = models.IntegerField()
     sedev = models.ForeignKey(SedevInfo)
     student = models.ForeignKey(Student)
-    teacher = models.ForeignKey(teacher)
+    teacher = models.ForeignKey(Teacher)
     date = models.DateField()
     score = models.IntegerField()
     

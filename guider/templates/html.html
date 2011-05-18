@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>{% block title %} Empty title {% endblock %}</title>
+        <style type="text/css"> 
+        
+        <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
+        <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">
+        <script type="text/javascript">window.__admin_media_prefix__ = "/media/";</script>
+        {% block style %} {% endblock %} </style>
+
+        {% block header %} {% endblock %}
+    </head>
+    <body class="login">
+  <!-- header -->
+  <header>
+    <div class="header-bg">
+        <div class="container_24">
+      	    <div class="display">
+            </div>
+            <nav>
+            <ul>
+          	    <li><a href="{% url main-page %}" class="current">Нүүр</a></li>
+                <li><a href="{% url home-student %}">Оюутан</a></li>
+                <li><a href="{% url home-teacher %}">Багш</a></li>
+                <li><a href="{% url home-FAQ %}">FAQ</a></li>
+                <li><a href="{% url contact %}">Холбоо барих</a></li>
+            </ul>
+            </nav>       
+            <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
+        </div>
+    </div>
+  </header>
+  <!-- content -->
+  <section id="content">
+       	<div class="container_24">
+    	<div class="column">
+      <div class="grid_6">
+             <div class ="box">
+             <div class="display">
+              <h5>Үндсэн цэс</h5>
+
+           <div id="menu">
+		<ul><b>
+			<li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+			<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+			<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+			<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+        {% if request.user %}
+            <li><a href="{% url logout-page %}" class="">Гарах</a></li>
+        {% endif%}
+		</ul></b>
+	</div>
+      <br></br>
+          <form action="{% url log-student %}" method="POST"> {% csrf_token %}
+        {% if not request.user %}
+               <table ><tr><td><h4>&nbsp;&nbsp;&nbsp;&nbsp;Нэвтрэх хэсэг</h4></td></tr> 
+                    <tr><td>Нэвтрэх нууц код: </td>
+                         </tr><tr><td></h5><input type="text" name="name" /></h5></td>
+                      </tr>   
+                    <tr><td>Нэвтрэх нууц үг:</td>
+                     </tr><tr><td><input type="password" name="code" /></td>
+                      </tr>
+                                     <tr><td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="art-button" type="submit" name="submit" value="Нэвтрэх"/></td></tr></form></brs>
+   <tr><td>эсвэл <a href="{% url reg-student %}" title="contact">бүртгүүлэх</a></td></tr>                
+  </table>
+        {% endif %}
+          
+            </div> </div></div>
+
+  </section>
+
+
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+        {% block body %} <p> This is default </p> {% endblock %}
+    </body>
+</html>
