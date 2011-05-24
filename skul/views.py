@@ -5,6 +5,7 @@ from django.views.generic import simple
 from django.shortcuts import render_to_response
 import urllib
 from skul.models import *
+from django.conf.urls.defaults import *
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
@@ -13,39 +14,44 @@ import datetime
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 import django.core.files
+from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_protect
 
 def root_view(request):
     return render_to_response('home.html')
 
 def student_register(request):
-    if request.method=="GET":
-        return render_to_response('studentregister.html')
-    else:
-        name=request.POST['name']
-        code = request.POST['code']
-        fname = request.POST['fname']
-        uovog = request.POST['uovog']
-        password = request.POST['password']
-        regNumber = request.POST['regnumber']
-        ynemNumber = request.POST['ynumber']
-        address = request.POST['address']
-        phone = request.POST['phone']
-        email = request.POST['email']
-        if request.POST['password'] == request.POST['password1']:
-            Student.objects.create(
-                username=convert_utf8(code),
-                password = convert_utf8(password), 
-                first_name=convert_utf8(name),
-                last_name = convert_utf8(fname), 
-                uovog=convert_utf8(uovog), 
-                regNumber = convert_utf8(regNumber), 
-                ynemNumber = convert_utf8(ynemNumber), 
-                address = convert_utf8(address), 
-                phone =convert_utf8(phone), 
-                email = convert_utf8(email))
-            content = '%s codetoi oyutan ta byrtgegdlee' %code               
-            sendsms(phone, content)   
-    return HttpResponseRedirect(reverse('home-student'))    
+	try:
+		if request.method=="GET":
+			return render_to_response('studentregister.html')
+		else:
+			name=request.POST['name']
+			code = request.POST['code']
+			fname = request.POST['fname']
+			uovog = request.POST['uovog']
+			password = request.POST['password']
+			regNumber = request.POST['regnumber']
+			ynemNumber = request.POST['ynumber']
+			address = request.POST['address']
+			phone = request.POST['phone']
+			email = request.POST['email']
+			if request.POST['password'] == request.POST['password1']:
+				Student.objects.create(
+				username=convert_utf8(code),
+				password = convert_utf8(password), 
+				first_name=convert_utf8(name),
+				last_name = convert_utf8(fname), 
+				uovog=convert_utf8(uovog), 
+				regNumber = convert_utf8(regNumber), 
+				ynemNumber = convert_utf8(ynemNumber), 
+				address = convert_utf8(address), 
+				phone =convert_utf8(phone), 
+				email = convert_utf8(email))
+				content = '%s codetoi oyutan ta byrtgegdlee' %code               
+				sendsms(phone, content)   
+		return HttpResponseRedirect(reverse('home-student'))    
+	except ValueError:
+		print "Энэ хэрэглэгч бүртгэгдсэн байна"
 
 @permission_required('skul.add_sedev_lavlah')
 def teacher_addtopic(request):
@@ -100,6 +106,7 @@ def convert_utf8(value):
     else:
         return value
 
+@csrf_protect
 def student_login(request):
     username = request.POST['name']
     password = request.POST['code']

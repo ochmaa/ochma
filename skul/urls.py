@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('guider.skul.views',
+urlpatterns = patterns('example.skul.views',
     url(r'^$', 'root_view', name='main-page'),
     url(r'^student/register$', 'student_register', name='reg-student'),
     url(r'^teacher/addtopic$', 'teacher_addtopic', name='addtopic-teacher'),
