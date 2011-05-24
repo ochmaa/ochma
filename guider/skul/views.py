@@ -36,12 +36,20 @@ def teacher_addtopic(request):
         template_name = 'TeacherSedevAdd.html'
     )
 
+@permission_required('skul.add_sedev_lavlah')
+def teacher_adduzleg(request):
+    return create_update.create_object(
+        request,
+        model = Uzleg,
+        post_save_redirect = reverse('home-teacher'),
+        template_name = 'teacher/adduzleg.html'
+    )
 
 def student_home(request):
     return render_to_response('studentHome.html')
 
 def teacher_home(request):
-    return render_to_response('TeacherHome.html')
+    return render_to_response('teacher/TeacherHome.html')
 
 @login_required()
 def FAQ_home(request):
