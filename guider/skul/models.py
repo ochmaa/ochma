@@ -1,12 +1,13 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 
 class Student(User):
-    uovog = models.CharField(max_length = 40)
-    regNumber = models.CharField(max_length = 10)
-    ynemNumber = models.CharField(max_length = 9)
-    address = models.CharField(max_length = 150)
-    phone = models.IntegerField()
+    uovog = models.CharField(max_length = 40,verbose_name ='Ургийн овог')
+    regNumber = models.CharField(max_length = 10, verbose_name='Регистрийн дугаар')
+    ynemNumber = models.CharField(max_length = 9,verbose_name='Иргэний үнэмлэхний дугаар')
+    address = models.CharField(max_length = 150, verbose_name='Гэрийн хаяг')
+    phone = models.IntegerField(verbose_name='Утасны дугаар')
     
 class Teacher(User):
     erdem_zereg = models.CharField(max_length = 20)
@@ -38,9 +39,9 @@ class score(models.Model):
     score = models.IntegerField()
         
 class SedevInfo(models.Model):
-    name = models.CharField(max_length = 20)
-    english_name = models.CharField(max_length = 30)
-    shaardlaga = models.TextField()
+    name = models.CharField(max_length = 20,verbose_name='Сэдвийн нэр')
+    english_name = models.CharField(max_length = 30,verbose_name='Сэдвийн англи нэр')
+    shaardlaga = models.TextField(verbose_name='Шаардлага')
     
 class songoson_sedev(models.Model):
     sedev = models.ForeignKey(SedevInfo)

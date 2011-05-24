@@ -13,54 +13,28 @@ import datetime
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 import django.core.files
+from django.views.generic import create_update
+from forms import StudentRegForm,SedevInfoForm
 
 def root_view(request):
     return render_to_response('home.html')
 
 def student_register(request):
-    if request.method=="GET":
-        return render_to_response('studentregister.html')
-    else:
-        name=request.POST['name']
-        code = request.POST['code']
-        fname = request.POST['fname']
-        uovog = request.POST['uovog']
-        password = request.POST['password']
-        regNumber = request.POST['regnumber']
-        ynemNumber = request.POST['ynumber']
-        address = request.POST['address']
-        phone = request.POST['phone']
-        email = request.POST['email']
-        if request.POST['password'] == request.POST['password1']:
-            Student.objects.create(
-                username=convert_utf8(code),
-                password = convert_utf8(password), 
-                first_name=convert_utf8(name),
-                last_name = convert_utf8(fname), 
-                uovog=convert_utf8(uovog), 
-                regNumber = convert_utf8(regNumber), 
-                ynemNumber = convert_utf8(ynemNumber), 
-                address = convert_utf8(address), 
-                phone =convert_utf8(phone), 
-                email = convert_utf8(email))
-            content = '%s codetoi oyutan ta byrtgegdlee' %code               
-            sendsms(phone, content)   
-    return HttpResponseRedirect(reverse('home-student'))    
+    return create_update.create_object(
+        request,
+        form_class = StudentRegForm,
+        post_save_redirect = reverse('home-student'),
+        template_name = 'studentregister.html'
+    )
 
 @permission_required('skul.add_sedev_lavlah')
 def teacher_addtopic(request):
-    if request.method=="GET":
-        return render_to_response('TeacherSedevAdd.html')
-    else:
-        name=request.POST['name']
-        ename = request.POST['ename']
-        environment = request.POST['environment']
-        sedev_filters = sedev_lavlah.objects.filter(name=name,english_name=ename)
-        if not sedev_filters:
-            sedev_lavlah.objects.create(name=convert_utf8(name), english_name=convert_utf8(ename),shaardlaga = convert_utf8(environment))
-        else:
-            return render_to_response('TeacherSedevAdd.html', {'error':1})
-        return render_to_response('TeacherSedevAdd.html',{'success':1})
+    return create_update.create_object(
+        request,
+        model = SedevInfo,
+        post_save_redirect = reverse('home-teacher'),
+        template_name = 'TeacherSedevAdd.html'
+    )
 
 
 def student_home(request):
@@ -116,9 +90,9 @@ def student_login(request):
 @login_required()
 def student_sedev(request):
     if request.method == "GET":
-        sedevs = sedev_lavlah.objects.all()
+        sedevs = SedevInfo.objects.all()
         t = loader.get_template('studentSedev.html')
-        teachers = teacher.objects.all()
+        teachers = Teacher.objects.all()
         c = Context({
         'sedev': sedevs,
         'teacher': teachers

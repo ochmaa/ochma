@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en-us" xmlns="http://www.w3.org/1999/xhtml" lang="en-us"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<head>
+  <title></title>
+   <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">
+  <script type="text/javascript">window.__admin_media_prefix__ = "/media/";</script>
+  <meta name="robots" content="NONE,NOARCHIVE">  
+
+</head>
+
+<body class="login">
+  <!-- header -->
+  <header>
+    <div class="header-bg">
+      <div class="container_24">
+      	<div class="display">
+        </div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}" class="current">Нүүр</a></li>
+            <li><a href="{% url home-student %}">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{}">Нарийн бичиг</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+          </ul>
+         </nav>       
+
+        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <section id="content">
+      <div class="container_24">
+      	<div class="column">
+      		<div class="grid_6">
+      			<div class ="box">
+      				<div class="display">
+              <h5>Үндсэн цэс</h5>
+
+      					<div id="menu">
+		<ul><b>
+			<li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+			<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+			<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+			<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+        {% if request.user %}
+            <li><a href="{% url logout-page %}" class="">Гарах</a></li>
+        {% endif%}
+		</ul></b>
+					</div>
+      <br></br>
+          <form action="{% url django.contrib.auth.views.login %}" method="POST"> {% csrf_token %}
+        {% if not request.user %}
+               <table ><tr><td><h4>&nbsp;&nbsp;&nbsp;&nbsp;Нэвтрэх хэсэг</h4></td></tr> 
+                    <tr><td>Нэвтрэх нууц код: </td>
+                         </tr><tr><td></h5><input type="text" name="name" /></h5></td>
+                      </tr>   
+                    <tr><td>Нэвтрэх нууц үг:</td>
+                     </tr><tr><td><input type="password" name="code" /></td>
+                      </tr>
+                                     <tr><td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="art-button" type="submit" name="submit" value="Нэвтрэх"/></td></tr></form></brs>
+   <tr><td>эсвэл <a href="{% url reg-student %}" title="contact">бүртгүүлэх</a></td></tr>                
+  </table>
+        {% endif %}
+          
+            </div> </div></div>
+        <IMG src="/static/nav.png" WIDTH="20" HEIGHT="2" BORDER="2">
+                <div style="width: 45px; height:30px"></div>
+                    <div style=" padding: 0px 0px 0px 0px">
+                      <div class="home_box">
+                            
+                             {% block main-body %}
+
+				{%endblock %}
+                           </div>
+                          
+                            <div style="width: 45px; height:20px; float: left;"></div>
+                            
+                             <span style="color: #000000;"><strong>|</strong></span>         
+                            <div class="home_box">
+                                 <div id="your_col">
+                                 {% block second-body %}
+
+				{% endblock %} 
+                             
+                            </div></div>
+</div>
+
+  </section>
+</body>
+</html>
