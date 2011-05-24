@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">
+  
+
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+    <div class="header-bg">
+      <div class="container_24">
+      	<div class="display">
+        </div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}" class="current">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+            <li><a href="">Жишээ баримт</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <section id="content">
+    <div class="container_24">
+        <div class="row">
+          	<div class="wrapper">
+            	<div class="grid_6">
+                  	<div class="box">
+                    	<h5>Үндсэн цэс</h5>
+                        <div id="menu">
+           	                <ul><b>
+                              <li><a href="{% url sedev-student %}" class="">Сэдэв</a></li>
+                              <li><a href="{% url yzhuv-student %}" class="">Үзлэгийн хуваарь</a></li>
+                              <li><a href="#" class="">Үзлэгийн дүн</a></li>
+                              <li><a href="{% url home-FAQ %}" class="">Асуулт, хариулт</a></li>
+              <li><a href="{% url logout-page %}" class="">Гарах</a></li>
+                            </ul></b>
+                        </div> 
+                    </div>
+                </div>
+        	<div class="grid_12">
+          	    <div class="box">
+                {% block box %}
+                {% endblock %}
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <footer>
+    <div class="container_24">
+    	<div class="wrapper">
+      	<div class="copy">ШУТИС-КтМС &copy; 2011 &nbsp;<a href="http://www.csms.edu.mn">Веб хаяг</a>&nbsp; | &nbsp; Ж.Очмаа <a title="Free Templates Online" href=""></a></div>
+        <nav>
+          <ul>
+          	<li><a href="{% url main-page %}">Нүүр</a></li>
+            <li><a href="{% url home-student %}">Оюутан</a></li>
+            <li><a href="{% url home-teacher %}">Багш</a></li>
+            <li><a href="{% url home-FAQ %}">FAQ</a></li>
+            <li><a href="{% url contact %}">Холбоо барих</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript"> Cufon.now(); </script>
+
+</body>
+</html>

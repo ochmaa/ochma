@@ -10,10 +10,10 @@ class StudentRegForm(UserCreationForm):
         fields = ('username', 'first_name','last_name','email','uovog','regNumber','address','phone')
 
 class SedevInfoForm(forms.ModelForm):
-    name = forms.CharField( error_messages= {
+    name = forms.CharField( label='Сэдвийн нэр',error_messages= {
         'required': 'Сэдвийн нэрээ оруулна уу'
     })
-    english_name = forms.CharField( error_messages = {
+    english_name = forms.CharField( label='Сэдвийн англи нэр',error_messages = {
         'required': 'Сэдвийн англи нэрийг оруулна уу'
     })
     class Meta:

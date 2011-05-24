@@ -43,6 +43,9 @@ class SedevInfo(models.Model):
     english_name = models.CharField(max_length = 30,verbose_name='Сэдвийн англи нэр')
     shaardlaga = models.TextField(verbose_name='Шаардлага')
     
+    def __unicode__(self):
+        return self.name
+    
 class songoson_sedev(models.Model):
     sedev = models.ForeignKey(SedevInfo)
     tugsult_code = models.IntegerField()

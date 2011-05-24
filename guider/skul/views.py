@@ -31,7 +31,7 @@ def student_register(request):
 def teacher_addtopic(request):
     return create_update.create_object(
         request,
-        model = SedevInfo,
+        form_class = SedevInfoForm,
         post_save_redirect = reverse('home-teacher'),
         template_name = 'TeacherSedevAdd.html'
     )
@@ -68,12 +68,6 @@ def contact(request):
 def stuSedev(request):
     return render_to_response('studentSedev.html')
 
-def convert_utf8(value):
-    if isinstance(value, unicode):
-        return value.encode('utf8')
-    else:
-        return value
-
 def student_login(request):
     username = request.POST['name']
     password = request.POST['code']
@@ -89,38 +83,12 @@ def student_login(request):
 
 @login_required()
 def student_sedev(request):
-    if request.method == "GET":
-        sedevs = SedevInfo.objects.all()
-        t = loader.get_template('studentSedev.html')
-        teachers = Teacher.objects.all()
-        c = Context({
-        'sedev': sedevs,
-        'teacher': teachers
-        })
-        return HttpResponse(t.render(c))
-    else:     
-        sedev_id = request.POST['sedevs']
-        teacher_id = request.POST['teachers']
-        now = datetime.datetime.now()
-        stuyear = ''
-        t = 1
-        if now.month>=6:
-            stuyear = '%s-%s'%(now.year,now.year+1)
-        else:
-            stuyear = '%s-%s'%(now.year-1,now.year)
-        sSedev = songoson_sedev.objects.filter(teacher_code=teacher_id, sedev_code=sedev_id)
-        if not sSedev:
-            songoson_sedev.objects.create(
-                sedev_code = sedev_id, 
-                tugsult_code = 1,
-                date = datetime.date.today(),
-                stu_year =  stuyear,
-                teacher_code = teacher_id,
-                student_code = request.user.username)
-            return render_to_response('studentSedev.html',{'success':1})
-        else:
-            return render_to_response('studentSedev.html',{'error':1})
-    return HttpResponseRedirect(reverse('sedev-student'))
+    return create_update.create_object(
+        request,
+        model = songoson_sedev,
+        post_save_redirect = reverse('home-student'),
+        template_name = 'studentSedev.html'
+    )
  
 
 
