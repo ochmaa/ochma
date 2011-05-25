@@ -1,0 +1,19 @@
+{% extends 'gol1.html' %}
+{% block box %}
+<form method="POST" action=""> {% csrf_token %}
+    {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+    {% endif %}
+    <table>
+       {% for field in form %}
+        <tr>
+            <td>{{field.label_tag}} </td>
+            <td>{{ field}}<font color ="red">{{field.errors}}</font></td>
+        </tr>
+       {% endfor %}
+       <tr>
+           <td><input type="submit" value="Бүртгэх" /></td>
+       </tr>
+    </table>
+</form>
+{% endblock %}

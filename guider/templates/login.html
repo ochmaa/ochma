@@ -1,71 +1,22 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en-us" xmlns="http://www.w3.org/1999/xhtml" lang="en-us"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
-
-<title></title>
-<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
-<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">
-
-<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/media/css/ie.css" /><![endif]-->
-
-<script type="text/javascript">window.__admin_media_prefix__ = "/media/";</script>
-
-<meta name="robots" content="NONE,NOARCHIVE">
-</head><body class="login">
-<header>
-<div class="header-bg">
-      <div class="container_24">
-      	<div class="display">
-        </div>
-        <nav>
-          <ul>
-          	<li><a href="{% url main-page %}">Нүүр</a></li>
-            <li><a href="{% url home-student %}">Оюутан</a></li>
-            <li><a href="{% url home-teacher %}">Багш</a></li>
-            <li><a href="{% url home-FAQ %}">FAQ</a></li>
-            <li><a href="{% url contact %}">Холбоо барих</a></li>
-          </ul>
-        </nav>
-        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
-      </div>
-    </div>
-</header>
-  <section id="content">
-  	<div class="container_24">
-    	<div class="column">
-      	<div class="wrapper">
-        	<div class="grid_16">
-          	<div class="box">
-<!-- Container -->
-<div id="container">
-
-    
-    <!-- Header -->
-    <div id="header">
-        <div id="branding">
-        
-<h1 id="site-name">Та нэвтэрч орно уу</h1>
-
-        </div>
-        
-        
-    </div>
-
-    <!-- END Header -->
-    
-    
-
-        
-
-    <!-- Content -->
-    <div id="content" class="colM">
-        
-        
-        
-
-<div id="content-main">
+{% extends "gol1.html" %}
+{% block menu %}
+                                <li><a href="{% url main-page %}" title="home" class = "current">Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+                                <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
+{% endblock %} 
+{% block menu2 %}
+                                <li><a href="{% url main-page %}" title="home">Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+{% endblock %}
+{% block box %}
 <form method="post" action="{% url django.contrib.auth.views.login %}">
     {% csrf_token %}
         <div class="prepend-9 span-6 append-9 last login-div">
@@ -79,30 +30,14 @@
                     {% endif %}
                 </td></tr>
                 <tr>
-                    <td>{{ form.username.label_tag }}</td><td>{{ form.username }}</td>
+                    <td>Нэвтрэх нэр</td><td>{{ form.username }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.password.label_tag }}</td><td>{{ form.password }}</td>
+                    <td>Нууц үг</td><td>{{ form.password }}</td>
                 </tr>
             </table>
-            <div class="span-6 last"><input type="submit" value="login" /></div>
-            <input type="hidden" name="next" value="{{ next }}" />
+            <div class="span-6 last"><input type="submit" value="Нэвтрэх" />эсвэл <a href="{% url reg-student %}" class=""><b>бүртгүүлэх</b></a></div>
+            <input type="hidden" name="next" value="{{ next }}"/>
         </div>
     </form>
-
-<script type="text/javascript">
-document.getElementById('id_username').focus()
-</script>
-</div>
-
-        
-        <br class="clear">
-    </div>
-    <!-- END Content -->
-</div></div><div>
-</section>
-    <div id="footer"></div>
-</div>
-<!-- END Container -->
-
-</body></html>
+{% endblock %}

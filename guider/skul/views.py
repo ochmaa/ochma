@@ -15,28 +15,28 @@ from django.core.urlresolvers import reverse
 import django.core.files
 from django.views.generic import create_update
 from forms import StudentRegForm,SedevInfoForm
-
+from django.template import RequestContext
 def root_view(request):
-    return render_to_response('home.html')
+    return render_to_response('home.html',context_instance=RequestContext(request))
 
 def student_register(request):
     return create_update.create_object(
         request,
         form_class = StudentRegForm,
         post_save_redirect = reverse('home-student'),
-        template_name = 'studentregister.html'
+        template_name = 'student/studentregister.html'
     )
 
-@permission_required('skul.add_sedev_lavlah')
+
 def teacher_addtopic(request):
     return create_update.create_object(
         request,
         form_class = SedevInfoForm,
         post_save_redirect = reverse('home-teacher'),
-        template_name = 'TeacherSedevAdd.html'
+        template_name = 'teacher/TeacherSedevAdd.html'
     )
 
-@permission_required('skul.add_sedev_lavlah')
+
 def teacher_adduzleg(request):
     return create_update.create_object(
         request,
@@ -46,10 +46,42 @@ def teacher_adduzleg(request):
     )
 
 def student_home(request):
-    return render_to_response('studentHome.html')
+    return render_to_response('student/studentHome.html')
+
+def nabi_home(request):
+    return render_to_response('NaBi/NaHome.html')
+
+def nabi_student(request):
+    return render_to_response('NaBi/NaStudent.html')
+
+def nabi_teacher(request):
+    return create_update.create_object(
+        request,
+        model = Teacher,
+        template_name = 'NaBi/NaTeacher.html',
+        extra_context = {
+            'object_list': Teacher.objects.all()
+        }
+    )
+
+def nabi_uzleg(request):
+    return render_to_response('NaBi/NaYzleg.html')
+
+def nabi_send(request):
+    return render_to_response('NaBi/NaNewsSend.html')
+
+def nabi_zar(request):
+    return render_to_response('NaBi/NaZar.html')
+
+def ex_home(request):
+    return render_to_response('material.html')
 
 def teacher_home(request):
     return render_to_response('teacher/TeacherHome.html')
+
+def teacher_news(request):
+    return render_to_response('teacher/TeacherNews.html')
+
 
 @login_required()
 def FAQ_home(request):
@@ -65,7 +97,7 @@ def FAQ_home(request):
         user = request.user
         ansQue.objects.create(
             question = question,
-            answer = '',
+            answer = '1',
             date = datetime.datetime.now(),
             user = user)
     return HttpResponseRedirect(reverse('home-FAQ'))
@@ -74,7 +106,7 @@ def contact(request):
     return render_to_response('contact.html')
 
 def stuSedev(request):
-    return render_to_response('studentSedev.html')
+    return render_to_response('student/studentSedev.html')
 
 def student_login(request):
     username = request.POST['name']
@@ -83,11 +115,15 @@ def student_login(request):
     if user is not None:
         if user.is_active:
             login(request, user)
-            return render_to_response('studentHome.html')
+            return render_to_response('student/studentHome.html')
         else:
-            return render_to_response('studentHome.html')
+            return render_to_response('student/studentHome.html')
     else:
         return render_to_response('home.html')
+
+@login_required()
+def student_score(request):
+    return render_to_response('student/studentYzlegScore.html')
 
 @login_required()
 def student_sedev(request):
@@ -95,7 +131,7 @@ def student_sedev(request):
         request,
         model = songoson_sedev,
         post_save_redirect = reverse('home-student'),
-        template_name = 'studentSedev.html'
+        template_name = 'student/studentSedev.html'
     )
  
 
@@ -103,18 +139,22 @@ def student_sedev(request):
 @login_required()
 def student_yzhuv(request):
     if request.method == "GET":
-        yzlegs = yzleg.objects.all()
-        nowyz  = yzleg.objects.filter(date__gt = datetime.date.today())
-        t = loader.get_template('studentYzleg.html')
+        uzlegs = Uzleg.objects.all()
+        nowyz  = Uzleg.objects.filter(date__gt = datetime.date.today())
+        t = loader.get_template('student/studentYzleg.html')
         c = Context({
-        'yzlegs': yzlegs,
+        'uzlegs': uzlegs,
         'nowyz': nowyz,
         })
         return HttpResponse(t.render(c))
 
+
+def teacher_student(request):
+    return render_to_response('teacher/TeacherStudent.html')  
+
 def contact_message(request):
     if request.method == "GET":
-        return render_to_response('studentregister.html')
+        return render_to_response('student/studentregister.html')
     else:
         name=request.POST['name']
         message = request.POST['message']

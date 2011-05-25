@@ -1,16 +1,43 @@
-{% extends "home1.html" %}
-{% block main-body %}
-Энэ бол нүүр хуудас
+{% extends "gol2.html" %}
+{% block menu %}
+                                <li><a href="{% url main-page %}" title="home" class = "current">Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+                                <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
 {% endblock %} 
+{% block menu2 %}
+                                <li><a href="{% url main-page %}" title="home">Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+
+{% endblock %} 
+{% block first-body %}
+      <img src="/static/images/img12.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+        <h1 class="h1_home_box">Ажлын зар</h1>
+        <div class="razd_h"></div>
+        <div style="width: 155px;  height:5px"></div>
+        <b>Ажилд урьж байна</b><br />
+        Linux OS, Python хэл мэдэх төгсөх курсын оюутан ажилд авна. Санхүүгийн ПХ-аар төсөл, диплом хийсэн бол сайн.Цалин сарын 400000 төгрөг
+		Холбоо барих</br>
+		DotMN LLC</br>
+ 		www.dot.mn</br>
+		99117430. 99051670<br></br>
+        </div>
+                          
+                                          
+{% endblock %}
+
 {% block second-body %}
  <img src="/static/images/img11.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
-                                  <h1 class="h1_home_box">Үзлэгийн хуваарь</h1>
-                                    <div class="razd_h"></div>
-                                    <div style="height:5px"></div>
-                          <h4>Дараагын үзлэгийн хуваарь </h4>
-                                      <table border="1" cellspacing="0" cellpadding="1" width="400">
-<tbody>
-
+  <h1 class="h1_home_box">Үзлэгийн хуваарь</h1>
+   <div class="razd_h"></div>
+ <table border="1" cellspacing="0" cellpadding="1" width="400">
         <tr>
 
             <th width="60" valign="top">Өдөр</th>
@@ -32,5 +59,5 @@
             <td width="80" valign="top">Програм 100% бэлэн болсон байх</td>
         </tr>
 </tbody>
-                             
+ </table>
 {% endblock %}

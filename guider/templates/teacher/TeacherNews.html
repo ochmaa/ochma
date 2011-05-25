@@ -1,4 +1,4 @@
-{% extends "gol1.html" %}
+{% extends 'gol1.html' %}
 {% block menu2 %} 
               <li><a href="{% url addtopic-teacher %}" class="">Сэдэв</a></li>
               <li><a href="{% url student-teacher %}" class="">Оюутан</a></li>
@@ -14,4 +14,8 @@
 				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
 				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
                                 <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
+{% endblock %}
+{% block box %}
+
+Оюутанд мэдээ илгээх хэсэг
 {% endblock %}

@@ -12,7 +12,7 @@
 .container_24 {
 	margin-left: auto;
 	margin-right: auto;
-	width: 984px;
+	width: 935px;
 	position:relative;
 }
 
@@ -47,7 +47,7 @@
 	float: left;
 	position: relative;
 	margin-left: 7px;
-	margin-right: 6px;
+	margin-right: 5px;
 }
 
 /* Grid >> Children (Alpha ~ First, Omega ~ Last)
@@ -85,7 +85,7 @@
 }
 
 .container_24 .grid_6 {
-	width:233px;
+	width:235px;
 }
 
 .container_24 .grid_7 {
@@ -93,15 +93,15 @@
 }
 
 .container_24 .grid_8 {
-	width:315px;
+	width:265px;
 }
 
 .container_24 .grid_9 {
-	width:356px;
+	width:326px;
 }
 
 .container_24 .grid_10 {
-	width:397px;
+	width:387px;
 }
 
 .container_24 .grid_11 {
@@ -125,7 +125,7 @@
 }
 
 .container_24 .grid_16 {
-	width:643px;
+	width:660px;
 }
 
 .container_24 .grid_17 {

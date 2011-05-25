@@ -1,0 +1,20 @@
+{% extends "gol1.html" %}
+{% block menu2 %} 
+              <li><a href="{% url teacher-nabi %}" class="">Багш</a></li>
+              <li><a href="{% url uzleg-nabi %}" class="">Үзлэг</a></li>
+              <li><a href="{% url student-nabi %}" class="">Оюутан</a></li>
+              <li><a href="{% url zar-nabi %}" class="">Ажлын зар</a></li>
+              <li><a href="{% url send-nabi %}" class="">Нэгдсэн мэдээ илгээх</a></li>
+{% endblock %}
+{% block menu %}
+                                <li><a href="{% url main-page %}" title="home">Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher" class = "current">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+                                <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
+{% endblock %}
+{% block box %}
+Энд зар мэдээ оруулна
+{% endblock %}

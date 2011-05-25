@@ -1,42 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title></title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">  
-</head>
+{% extends "gol2.html" %}
+{% block menu %}
+                                <li><a href="{% url main-page %}" title="home">Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ" class = "current" >FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+                                <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
+{% endblock %} 
+{% block menu2 %}
+                                <li><a href="{% url main-page %}" title="home">Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
 
-<body>
-  <!-- header -->
-  <header>
-    <div class="header-bg">
-      <div class="container_24">
-      	<div class="display">
-        </div>
-        <nav>
-          <ul>
-          	<li><a href="{% url main-page %}">Нүүр</a></li>
-            <li><a href="{% url home-student %}">Оюутан</a></li>
-            <li><a href="{% url home-teacher %}">Багш</a></li>
-            <li><a href="{% url home-FAQ %}" class="current">FAQ</a></li>
-            <li><a href="{% url contact %}">Холбоо барих</a></li>
-          </ul>
-        </nav>
-        <a href="#" class="main-banner"><img src="/static/images/1.jpg" alt=""></a>
-      </div>
-    </div>
-  </header>
-  <!-- content -->
-  <section id="content">
-  	<div class="container_24">
-    	<div class="row">
-      	<div class="wrapper">
-        	<div class="grid_16">
-          	<div class="box">
+{% endblock %} 
+{% block second-body %}
 <form action="{% url home-FAQ %}" method="POST"> {% csrf_token %}
-            	<h2>Сүүлд асуугдсан асуултууд</h2>
+            	<h3>Сүүлд асуугдсан асуултууд болон хариултууд</h3>
            {% for a in aq %}
               <dl class="list3"><table>
               	<tr><td><dt>Асуулт: {{a.question}}</dt></td></tr>
@@ -44,11 +27,8 @@
 </table>
          {%endfor%}
               </dl>
-            </div>
-          </div>
-        	<div class="grid_8">
-            <div class="inside">
-              <div class="inside">
+{% endblock %}
+{% block first-body %}
                 <h3>Асуултын жагсаалтууд</h3>
                 <dl class="list2">
                 	<dt>Хариулагдаагүй асуултууд</dt>
@@ -63,16 +43,8 @@
                 </dl>
                 <a href="#" class="button">More</a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div></form>
-  	<div class="container_24">
-<div class="row">
-      	<div class="wrapper">
-      	  <div class="grid_13">
-          	<div class="suffix_1">
+</form>
+
          
             	<h3>Асуулт асуух</h3>
               <p>Та асуултаа асууна уу?:</p>
@@ -85,29 +57,4 @@
                     </div>
                   </div>
               </form>
-            </div>
-          </div>
-      </div>
-
-
-  </section>
-  <!-- footer -->
-   <footer>
-    <div class="container_24">
-    	<div class="wrapper">
-      	<div class="copy">ШУТИС-КтМС &copy; 2011 &nbsp;<a href="http://www.csms.edu.mn">Веб хаяг</a>&nbsp; | &nbsp; Ж.Очмаа <a title="" href=""></a></div>
-        <nav>
-          <ul>
-          	<li><a href="{% url main-page %}">Нүүр</a></li>
-            <li><a href="{% url home-student %}">Оюутан</a></li>
-            <li><a href="{% url home-teacher %}">Багш</a></li>
-            <li><a href="{% url home-FAQ %}">FAQ</a></li>
-            <li><a href="{% url contact %}">Холбоо барих</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </footer>
-  <script type="text/javascript"> Cufon.now(); </script>
-</body>
-</html>
+{% endblock %}

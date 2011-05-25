@@ -1,0 +1,30 @@
+{% extends "gol1.html" %}
+{% block menu %}
+                                <li><a href="{% url main-page %}" title="home" >Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+                                <li><a href="{% url home-ex %}" class = "current">Жишээ баримт</a></li>
+{% endblock %} 
+{% block menu2 %}
+                                <li><a href="{% url main-page %}" title="home">Нүүр хуудас</a></li>
+                                <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
+				<li><a href="{% url home-teacher %}" title="teacher">Багш</a></li>
+                                <li><a href="{% url home-nabi %}" title="teacher">Нарийн бичиг</a></li>
+				<li><a href="{% url home-FAQ %}" title="FAQ">FAQ</a></li>
+				<li><a href="{% url contact %}" title="contact">Холбоо барих</a></li>
+
+{% endblock %} 
+{% block box %}
+<form action="{% url home-FAQ %}" method="POST"> {% csrf_token %}
+            	<h3>Жишээ баримтууд</h3>
+           {% for a in aq %}
+              <dl class="list3"><table>
+              	<tr><td><dt>Асуулт: {{a.question}}</dt></td></tr>
+                <tr><td><dd>Хариулт:{{a.answer}} </dd></td></tr>
+</table>
+         {%endfor%}
+              </dl>
+{% endblock %}

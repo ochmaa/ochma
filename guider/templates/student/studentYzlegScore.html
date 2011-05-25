@@ -1,0 +1,54 @@
+{% extends "gol1.html" %}
+{% block menu %}
+           <li><a href="{% url main-page %}">Нүүр</a></li>
+           <li><a href="{% url home-student %}"  class="current">Оюутан</a></li>
+           <li><a href="{% url home-teacher %}">Багш</a></li>
+           <li><a href="{% url home-nabi %}">Нарийн бичиг</a></li>
+           <li><a href="{% url home-FAQ %}">FAQ</a></li>
+           <li><a href="{% url contact %}">Холбоо барих</a></li>  
+           <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
+{% endblock %}
+{% block menu2 %}
+              <li><a href="{% url sedev-student %}" class="">Сэдэв</a></li>
+              <li><a href="{% url yzhuv-student %}" class="">Үзлэгийн хуваарь</a></li>
+              <li><a href="{% url score-student %}" class="">Үзлэгийн дүн</a></li>
+              <li><a href="{% url home-FAQ %}" class="">Асуулт, хариулт</a></li>
+
+{% endblock %}
+{% block box %}
+            	<form action="{% url yzhuv-student %}" method="POST"> {% csrf_token %}
+                {% if uzlegs %}
+
+                <table><img src="/static/images/img11.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+                                  <h1 class="h1_home_box">Үзлэгийн хуваарь</h1>
+                                    <div class="razd_h"></div>
+                                   <table border="1" cellspacing="0" cellpadding="0" width="700">
+<tbody>
+
+        <tr>
+            <th width="43" valign="top"></th>
+            <th width="10" valign="top"></th>
+            <th width="60" valign="top">Өдөр</th>
+            <th width="10" valign="top">Цаг</th>
+            <th width="10"  valign="top">Дүгнэх оноо</th>
+            <th width="20" valign="top">Ажиллах комисс</th>
+            <th width="10" valign="top">Өрөө</th>
+            <th width="80" valign="top">Шаардлага</th>
+        </tr>
+                {% for y in yzlegs %}
+
+        <tr>
+            <th width="43" valign="top">{{y.id}}</th>
+            <td width="10" valign="top">{{y.name}}</td>
+            <td width="40" valign="top">{{y.date}}</td>
+            <td width="30" valign="center">{{y.time}}</td>
+            <td width="30" valign="top">{{y.score}}</td>
+            <td width="60" valign="top">{{y.commis}}</td>
+            <td width="30" valign="center">{{y.room}}</td>
+            <td width="80" valign="top">{{y.shaardlaga}}</td>
+        </tr>
+                {%endfor%}
+                {% endif%}
+</tbody>
+</table>
+{% endblock %}

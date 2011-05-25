@@ -1,0 +1,73 @@
+{% extends "gol2.html" %}
+{% block menu %}
+ 	           <li><a href="{% url main-page %}">Нүүр</a></li>
+	           <li><a href="{% url home-student %}"  class="current">Оюутан</a></li>
+	           <li><a href="{% url home-teacher %}">Багш</a></li>
+                   <li><a href="{% url home-nabi %}">Нарийн бичиг</a></li>
+	           <li><a href="{% url home-FAQ %}">FAQ</a></li>
+	           <li><a href="{% url contact %}">Холбоо барих</a></li>  
+                   <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
+
+{% endblock %}
+{% block menu2 %}
+              <li><a href="{% url sedev-student %}" class="">Сэдэв</a></li>
+              <li><a href="{% url yzhuv-student %}" class="">Үзлэгийн хуваарь</a></li>
+              <li><a href="{% url score-student %}" class="">Үзлэгийн дүн</a></li>
+              <li><a href="{% url home-FAQ %}" class="">Асуулт, хариулт</a></li>
+
+{% endblock %}
+{% block first-body %}
+<img src="/static/images/img12.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+        <h1 class="h1_home_box">Ажлын зар</h1>
+        <div class="razd_h"></div>
+        <div style="width: 155px;  height:5px"></div>
+        <b>Ажилд урьж байна</b><br />
+        Linux OS, Python хэл мэдэх төгсөх курсын оюутан ажилд авна. Санхүүгийн ПХ-аар төсөл, диплом хийсэн бол сайн.Цалин сарын 400000 төгрөг
+		Холбоо барих</br>
+		DotMN LLC</br>
+ 		www.dot.mn</br>
+		99117430. 99051670<br></br>
+               <div class="razd_h"></div></br>
+        <b>Grapecity ажилд урьж байна</b><br />
+        Grapecity  програмын чанарын үйлчилгээ явуулах ажилтан авна, 
+програмын код бичихгүй, бичиг баримт бүрдүүлэх, ажил зохион байгуулах чадвартай охидууд байвал ажилд авна гэнэ
+
+ <a href="http://www.grapecity.mn/?p=careersө/" title="contact">Энэхүү</a>
+
+хаягаар орж ажлын байртай танилцаарай
+		Холбоо барих</br>
+		Grapecity LLC</br>
+ 		</div>
+{% endblock %}
+{% block second-body %}
+
+ <img src="/static/images/img11.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+  <h1 class="h1_home_box">Анхааруулга</h1>
+   <div class="razd_h"></div>
+      <font size="8" color=#25383C  ><strong>
+     Тун удахгүй төгсөлтийн ажлын урьдчилсан хамгаалалт болох гэж байна.
+      </font></strong>
+ <table border="1" cellspacing="0" cellpadding="1" width="400">
+        <tr>
+
+            <th width="60" valign="top">Өдөр</th>
+            <th width="10" valign="top">Цаг</th>
+            <th width="10"  valign="top">Дүгнэх оноо</th>
+            <th width="20" valign="top">Ажиллах комисс</th>
+            <th width="10" valign="top">Өрөө</th>
+            <th width="80" valign="top">Шаардлага</th>
+        </tr>
+
+
+        <tr>
+
+            <td width="40" valign="top">2011-05-12</td>
+            <td width="30" valign="center">15:00</td>
+            <td width="30" valign="top">15</td>
+            <td width="60" valign="top">Багийн бүх багш нар</td>
+            <td width="30" valign="center">204</td>
+            <td width="80" valign="top">Програм 100% бэлэн болсон байх</td>
+        </tr>
+</tbody>
+ </table>
+{% endblock %}

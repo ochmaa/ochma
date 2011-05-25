@@ -1,4 +1,4 @@
-{% extends 'gol1.html' %}
+{% extends "gol1.html" %}
 {% block menu %}
                                 <li><a href="{% url main-page %}" title="home">Нүүр хуудас</a></li>
                                 <li><a href="{% url home-student %}" title="student">Оюутан</a></li>
@@ -16,22 +16,5 @@
               <li><a href="{% url home-FAQ %}" class="">Асуулт, хариулт</a></li>
 {% endblock %}
 {% block box %}
-
-<form method="POST" action=""> {% csrf_token %}
-    {% if form.non_field_errors %}
-        {{ form.non_field_errors }}
-    {% endif %}
-    <table>
-    
-    {% for field in form %}
-        <tr>
-            <td>{{field.label_tag}} </td>
-            <td>{{ field}}<font color=red>{{field.errors}}</font></td>
-        </tr>
-    {% endfor %}
-    <tr>
-    <td><input type="submit" value="Бүртгэх" /></td>
-    </tr>
-    </table>
-</form>
+   Оюутаны мэдээлэл энд байрлана
 {% endblock %}
