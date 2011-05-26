@@ -14,7 +14,7 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 import django.core.files
 from django.views.generic import create_update
-from forms import StudentRegForm,SedevInfoForm
+from forms import *
 from django.template import RequestContext
 def root_view(request):
     return render_to_response('home.html',context_instance=RequestContext(request))
@@ -52,12 +52,20 @@ def nabi_home(request):
     return render_to_response('NaBi/NaHome.html')
 
 def nabi_student(request):
-    return render_to_response('NaBi/NaStudent.html')
+    if request.method == "GET":
+        student = Student.objects.all()
+        t = loader.get_template('NaBi/NaStudent.html')
+        c = Context({
+        'student': student,
+        })
+        return HttpResponse(t.render(c))
+
 
 def nabi_teacher(request):
     return create_update.create_object(
         request,
-        model = Teacher,
+        form_class = NabiTeacherForm,
+        post_save_redirect = reverse('teacher-nabi'),
         template_name = 'NaBi/NaTeacher.html',
         extra_context = {
             'object_list': Teacher.objects.all()
@@ -65,13 +73,29 @@ def nabi_teacher(request):
     )
 
 def nabi_uzleg(request):
-    return render_to_response('NaBi/NaYzleg.html')
+    return create_update.create_object(
+        request,
+        form_class = NabiUzlegForm,
+        post_save_redirect = reverse('uzleg-nabi'),
+        template_name = 'NaBi/NaYzleg.html',
+        extra_context = {
+            'object_list': Uzleg.objects.all()
+        }
+    )
 
 def nabi_send(request):
     return render_to_response('NaBi/NaNewsSend.html')
 
 def nabi_zar(request):
-    return render_to_response('NaBi/NaZar.html')
+    return create_update.create_object(
+        request,
+        form_class = NaZarForm,
+        post_save_redirect = reverse('zar-nabi'),
+        template_name = 'NaBi/NaZar.html',
+        extra_context = {
+            'object_list': News.objects.all()
+        }
+    )
 
 def ex_home(request):
     return render_to_response('material.html')
@@ -140,7 +164,7 @@ def student_sedev(request):
 def student_yzhuv(request):
     if request.method == "GET":
         uzlegs = Uzleg.objects.all()
-        nowyz  = Uzleg.objects.filter(date__gt = datetime.date.today())
+        nowyz  = Uzleg.objects.filter(date__gt = datetime.now())
         t = loader.get_template('student/studentYzleg.html')
         c = Context({
         'uzlegs': uzlegs,

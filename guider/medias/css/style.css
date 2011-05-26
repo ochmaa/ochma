@@ -90,6 +90,13 @@ html, body { height:100%;}
 	overflow:hidden;
 }
 
+.wlapper { 
+	height:30%;
+        width:100%;
+	overflow:hidden;
+
+}
+
 /*----- form defaults -----*/
 input, select, textarea { 
 	font-family:Arial, Helvetica, sans-serif;

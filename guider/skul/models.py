@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date, time, datetime
 
 class Student(User):
     uovog = models.CharField(max_length = 40,verbose_name ='Ургийн овог')
@@ -20,10 +21,11 @@ class NewsType(models.Model):
     
 class News(models.Model):
     code = models.CharField(max_length = 10)
-    newstype  = models.ForeignKey(NewsType)
-    content = models.TextField()
-    NBName = models.CharField(max_length = 20)
-    date = models.DateField()
+    newstype  = models.ForeignKey(NewsType, default = '1')
+    content = models.TextField(verbose_name = 'Агуулга')
+    NBName = models.CharField(max_length = 20, default = 'Undraa')
+    date = models.DateField(default = datetime.now())
+    garchig = models.CharField(max_length = 50)
     
 class Uzleg(models.Model):
     name = models.CharField(max_length = 50)
@@ -31,7 +33,8 @@ class Uzleg(models.Model):
     time = models.TimeField()
     commis = models.CharField(max_length = 50)
     room = models.IntegerField()
-    shaardlaga = models.TextField()
+    shaardlaga = models.TextField(verbose_name='Шаардлага')
+    scores = models.IntegerField()
 
 class score(models.Model):
     uzleg  = models.ForeignKey(Uzleg)

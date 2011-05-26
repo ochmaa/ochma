@@ -16,5 +16,32 @@
                                 <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
 {% endblock %}
 {% block box %}
-Энд зар мэдээ оруулна
+<font size = "8" color = "#41383C"><b><strong>Зар мэдээнүүд</b></strong></font>
+  <div class="razd_h"></div>
+
+                {% for t in object_list %}
+
+               <b>{{t.garchig}}</b><br />
+                  {{t.content}}</br>
+	       <div class="razd_h"></div></br>
+                {%endfor%}
+
+
+<form method="POST" action=""> {% csrf_token %}
+    {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+    {% endif %}
+    <table>
+       <tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size = "8" color = "#41383C"><b><strong>Зар мэдээ оруулах</font></b></strong></tr></br></br>
+       {% for field in form %}
+        <tr>
+            <td>{{field.label_tag}} </td>
+            <td>{{ field}}<font color ="red">{{field.errors}}</font></td>
+        </tr>
+       {% endfor %}
+       <tr>
+           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Бүртгэх" /></td>
+       </tr>
+    </table>
+</form>
 {% endblock %}

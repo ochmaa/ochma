@@ -16,5 +16,43 @@
                                 <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
 {% endblock %}
 {% block box %}
-Энд оюунтны мэдээллийн харуулна
+<form action="{% url student-nabi %}" method="POST"> {% csrf_token %}
+                {% if student %}
+                <div class = "wlapper">
+                <table botable cellspacing="0" cellpadding="0"><img src="/static/images/img11.gif" style="padding: 0px 17px 0px 0px; float:left;" alt="" />
+                                  <h1 class="h1_home_box">Оюутнуудын мэдээлэл</h1>
+                                    <div class="razd_h"></div>
+                                   <table border="1" cellspacing="0" cellpadding="0" width="700">
+<tbody>
+
+        <tr>
+
+            <th width="60" valign="top">Код</th>
+            <th width="10" valign="top">Овог</th>
+            <th width="10"  valign="top">Нэр</th>
+            <th width="20" valign="top">Ургийн овог</th>
+            <th width="10" valign="top">Цахим хаяг</th>
+            <th width="80" valign="top">Утасны дугаар</th>
+            <th width="20" valign="top">Гэрийн хаяг</th>
+            <th width="10" valign="top">Регистрийн дугаар</th>
+            <th width="80" valign="top">Үнэмлэхний дугаар</th>
+        </tr>
+                {% for y in student %}
+
+        <tr>
+            <th width="43" valign="top">{{y.username}}</th>
+            <td width="10" valign="top">{{y.first_name}}</td>
+            <td width="40" valign="top">{{y.last_name}}</td>
+            <td width="30" valign="center">{{y.uovog}}</td>
+            <td width="30" valign="top">{{y.email}}</td>
+            <td width="60" valign="top">{{y.phone}}</td>
+            <td width="30" valign="center">{{y.address}}</td>
+            <td width="80" valign="top">{{y.regNumber}}</td>
+            <td width="60" valign="top">{{y.ynemNumber}}</td>
+        </tr>
+                {%endfor%}
+                {% endif%}
+</tbody>
+</table></div></form>
 {% endblock %}
+

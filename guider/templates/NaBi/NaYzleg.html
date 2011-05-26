@@ -16,5 +16,54 @@
                                 <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
 {% endblock %}
 {% block box %}
-Энд үзлэгийн мэдээлэл оруулна, бас харуулна :) ккк
+
+<font size = "8" color = "#41383C"><b><strong>Үзлэгийн хуваарь</b></strong></font>
+  <div class="razd_h"></div>
+  <table border="1" cellspacing="0" cellpadding="0" width="700">
+<tbody>
+
+        <tr>
+            <th width="43" valign="top">Д/д</th>
+            <th width="10" valign="top">Үзлэг</th>
+            <th width="60" valign="top">Өдөр</th>
+            <th width="10" valign="top">Цаг</th>
+            <th width="10"  valign="top">Дүгнэх оноо</th>
+            <th width="20" valign="top">Ажиллах комисс</th>
+            <th width="10" valign="top">Өрөө</th>
+            <th width="80" valign="top">Шаардлага</th>
+        </tr>
+                {% for t in object_list %}
+
+        <tr>
+            <th width="43" valign="top">{{t.id}}</th>
+            <td width="10" valign="top">{{t.name}}</td>
+            <td width="40" valign="top">{{t.date}}</td>
+            <td width="30" valign="center">{{t.time}}</td>
+            <td width="30" valign="top">{{t.scores}}</td>
+            <td width="60" valign="top">{{t.commis}}</td>
+            <td width="30" valign="center">{{t.room}}</td>
+            <td width="80" valign="top">{{t.shaardlaga}}</td>
+        </tr>
+                {%endfor%}
+</tbody>
+</table>
+  <div class="razd_h"></div>
+
+<form method="POST" action=""> {% csrf_token %}
+    {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+    {% endif %}
+    <table>
+       <tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size = "8" color = "#41383C"><b><strong>Багшийн бүртгэлийг оруулах</font></b></strong></tr></br></br>
+       {% for field in form %}
+        <tr>
+            <td>{{field.label_tag}} </td>
+            <td>{{ field}}<font color ="red">{{field.errors}}</font></td>
+        </tr>
+       {% endfor %}
+       <tr>
+           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Бүртгэх" /></td>
+       </tr>
+    </table>
+</form>
 {% endblock %}

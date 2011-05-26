@@ -16,25 +16,32 @@
                                 <li><a href="{% url home-ex %}">Жишээ баримт</a></li>
 {% endblock %}
 {% block box %}
+
 <table border="1">
+        <tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size = "8" color = "#41383C"><b><strong>Нийт багш нар</font></b></strong></tr>
+
         <tr>
-            <td>Багшийн код</td>
-            <td>Эрдмийн зэрэг</td>
+            <th width="80" valign="top">Багшийн код</th>
+            <th width="80" valign="top">Нэр</th>
+            <th width="80" valign="top">Эрдмийн зэрэг</th>
         </tr>
     {% for t in object_list %}
         <tr>
-            <td>{{t.username}}</td>
-            <td>{{t.erdem_zereg}}</td>
+            <td width="80" valign="top">{{t.username}}</td>
+            <td width="80" valign="center">{{t.last_name}}</td>
+            <td width="80" valign="top">{{t.erdem_zereg}}</td>            
         </tr>
-    {% endfor %}
+    {% endfor %}</br>
 
-</table>
-<br />
+</table><br>
+  <div class="razd_h"></div>
+
 <form method="POST" action=""> {% csrf_token %}
     {% if form.non_field_errors %}
         {{ form.non_field_errors }}
     {% endif %}
     <table>
+       <tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size = "8" color = "#41383C"><b><strong>Багшийн бүртгэлийг оруулах</font></b></strong></tr></br></br>
        {% for field in form %}
         <tr>
             <td>{{field.label_tag}} </td>
@@ -42,7 +49,7 @@
         </tr>
        {% endfor %}
        <tr>
-           <td><input type="submit" value="Бүртгэх" /></td>
+           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Бүртгэх" /></td>
        </tr>
     </table>
 </form>
